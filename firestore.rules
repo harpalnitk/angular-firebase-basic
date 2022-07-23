@@ -1,0 +1,78 @@
+// rules_version = '2';
+// service cloud.firestore {
+//   match /databases/{database}/documents {
+//     match /{document=**} {
+//       allow read, write: if
+//           request.time < timestamp.date(2021, 5, 1);
+//     }
+//   }
+// }
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+  
+  function isAuthenticated(){
+  return request.auth.uid != null;
+  }
+  
+  // true only if user is authenticated
+  //and user id exists as document in users collection
+  //where we manually saved the user id copied from 
+  //firebase authentication into our own users collection
+  // in users collection we did not use auto generated ids
+  //instead we copied authentication uid to create our own whitelisted user
+  //documents
+  function isKnownUser(){
+  return 
+  isAuthenticated() 
+  && exists(/databases/$(database)/documents/users/$(request.auth.uid));
+  }
+  
+  function isAdmin(){
+   return 
+  isAuthenticated() 
+  && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+  }
+  
+  function isNonEmptyString(fieldName){
+  return request.resource.data[fieldName] is string
+  &&  request.resource.data[fieldName].size() > 0;
+  }
+  // request.resource is new document
+  // only resource is old document in database
+  function isValidCourse(){
+  return request.resource.data.seqNo is number 
+  && request.resource.data.lessonsCount is number 
+  && request.resource.data.lessonsCount > 0
+  && isNonEmptyString("url");
+  }
+  
+  match /users/{userId}{
+  allow read,write: if false;
+  // Nobody can read or write this whitelist of users
+  }
+    match /courses/{courseId} {
+      allow read: if isAuthenticated();
+      allow write: 
+      if isAdmin()
+      && isValidCourse()
+      //&& resource.data.status == 'draft';
+   //rules van also be set for comparison
+   //with current value of fields in documents
+   //as here the update will only happen
+   // if the staus field has value draft
+   //staus field is manually created by us on document
+   match /lessons/{lessonId} {
+      //allow read: if request.auth.uid != null;
+      //Using Function
+       allow read: if isKnownUser();
+        allow write: if isAdmin();
+    }
+    }
+    //  match /courses/{courseId}/lessons/{lessonId} {
+    //   allow read: if request.auth.uid != null;
+    //   nested above
+    // }
+  }
+}

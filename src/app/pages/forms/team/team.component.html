@@ -1,0 +1,30 @@
+<h1>Sorting Array of Forms</h1>
+<form class="example-form mat-elevation-z8" [formGroup]="teamFormGroup">
+    <!-- <span>{{teamFormGroup.value.teamName}}</span> -->
+    <mat-form-field class='row'>
+        <mat-label>Team name</mat-label>
+        <input matInput placeholder="Team Name" formControlName="teamName">
+      </mat-form-field>
+      <div class='row'>
+        <button mat-raised-button color="primary" class="submit-button" type="button" (click)="sortByFirstName()">Sort By First Name</button>
+        <button mat-raised-button color="primary" class="submit-button" type="button" (click)="sortByFavColor()">Sort By Fav Color</button>
+      </div>
+   
+    <div class="form-group" formArrayName="members">
+        <div *ngFor="let memberGroup of (teamFormGroup.controls.members | cast: FormArray).controls">
+            <ng-container [formGroup]="memberGroup | cast: FormGroup">
+            <span>{{getOrigDataValue(memberGroup).id}}</span>
+            <span>{{getOrigDataValue(memberGroup).firstName}}</span>
+            <span>{{getOrigDataValue(memberGroup).lastName}}</span>
+            <span>{{getOrigDataValue(memberGroup).favFood}}</span>
+            <mat-form-field>
+                <mat-label>Favorite Color</mat-label>
+                <input matInput placeholder="Fav Color" formControlName="favColor">
+              </mat-form-field>
+            <!-- <input type="text" formControlName="favColor"> -->
+        </ng-container>
+    </div>
+        </div>
+</form>
+
+

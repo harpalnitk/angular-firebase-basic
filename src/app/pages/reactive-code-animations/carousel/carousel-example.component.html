@@ -1,0 +1,51 @@
+<carousel #carousel>
+    <ng-container *ngIf="carousel.activeState$ | async as activeState">
+      <carousel-item state="spongebob" [activeState]="activeState">
+        <img
+          src="assets/img/spongebob/spongebob-01.png"
+          data-image="1"
+          class="size-sm"
+        />
+        <img
+          src="assets/img/spongebob/spongebob-02.png"
+          data-image="2"
+          class="size-xl m-md"
+        />
+        <img
+          src="assets/img/spongebob/spongebob-03.png"
+          data-image="3"
+          class="size-md m-sm"
+        />
+      </carousel-item>
+      <carousel-item state="patrick" [activeState]="activeState">
+        <img
+          src="assets/img/spongebob/patrick-03.png"
+          data-image="1"
+          class="size-md m-sm"
+        />
+        <img
+          src="assets/img/spongebob/patrick-02.png"
+          data-image="2"
+          class="size-lg m-lg"
+        />
+        <img
+          src="assets/img/spongebob/patrick-01.png"
+          data-image="3"
+          class="size-xl"
+        />
+      </carousel-item>
+      <carousel-item state="gary" [activeState]="activeState">
+        <img
+          src="assets/img/spongebob/gary-01.png"
+          data-image="1"
+          class="size-xl m-md"
+        />
+        <img src="assets/img/spongebob/gary-02.png" data-image="2" class="size-sm" />
+        <img
+          src="assets/img/spongebob/gary-03.png"
+          data-image="3"
+          class="size-md m-md"
+        />
+      </carousel-item>
+    </ng-container>
+  </carousel>

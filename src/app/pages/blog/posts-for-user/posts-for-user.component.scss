@@ -1,0 +1,13 @@
+.top-row{
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem 1rem;
+  margin: 1rem 0;
+  
+  mat-form-field {
+    width: 50%;
+    button {
+      font-size: 1.5rem;
+    }
+  }
+}

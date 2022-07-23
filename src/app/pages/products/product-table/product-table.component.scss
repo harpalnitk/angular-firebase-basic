@@ -1,0 +1,16 @@
+.top-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 1rem;
+    button{
+      margin: 1rem 0;
+    }
+    mat-form-field{
+      max-width: 50%;
+    }
+  }
+  
+  .small{
+    font-size: 0.8rem;
+  }

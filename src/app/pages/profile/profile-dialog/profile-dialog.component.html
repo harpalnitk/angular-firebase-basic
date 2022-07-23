@@ -1,0 +1,136 @@
+<h2 mat-dialog-title class="dialog-title">EDIT PROFILE</h2>
+
+
+<ng-container *ngIf="isLoading$ | async; else elseTemplate">
+  <div class="u__center">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="dialog-container">
+
+
+    <mat-dialog-content [formGroup]="form">
+      <app-image-picker
+      [image]="form.get('photoURL').value"
+      [inputPath]="'profile'"
+      (outputImageURL)="onImagePicked($event)"></app-image-picker>
+      <mat-form-field>
+        <input matInput 
+        placeholder="Display Name"
+         formControlName="displayName"
+         required
+         minlength="5"
+         maxlength="40" />
+         <mat-error
+         >Has to be between 5 and 40 characters.
+       </mat-error>
+      </mat-form-field>
+      <div class="two-field-div">
+        <mat-form-field>
+          <input matInput 
+          placeholder="First Name"
+           formControlName="firstName" />
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput 
+          placeholder="Last Name"
+           formControlName="lastName"/>
+        </mat-form-field>
+      </div>
+   
+
+  
+      <div class="radio-gender">
+        <mat-radio-group aria-label="Select Gender"  formControlName="gender">
+          <mat-radio-button color="primary" *ngFor="let gender of genders" [value]="gender.value">{{gender.viewValue}}</mat-radio-button>
+        </mat-radio-group>
+        </div>
+
+        <mat-form-field hintLabel="Must be less than 400 characters">
+          <textarea
+            matInput
+            placeholder="About"
+            formControlName="about"
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="2"
+            cdkAutosizeMaxRows="5"
+            autocomplete="false"
+            maxlength="400"
+          ></textarea>
+          <mat-error
+          >Must be less than 400 characters.
+        </mat-error>
+        </mat-form-field>
+      
+        <div formGroupName="contact" class="dialog-container--group">
+          <div formArrayName="phones">
+            <div class="add-button">
+              <button
+              mat-stroked-button color="accent"
+              (click)="onAddPhone()"  type="button">Add Phone</button>
+            </div>
+
+            <div
+              *ngFor="let phoneCntrl of phones.controls; let i = index" class="phone-row">
+              <mat-form-field>
+                <mat-label>Phone {{i+1}}: </mat-label>
+                <input
+                  type="text"
+                  matInput
+                  [formControlName]="i"
+                  required
+                  maxlength="20">
+                <mat-error *ngIf="form.get('contact.phones')?.hasError('required',[i])">Phone number cannot be empty.</mat-error>
+                <mat-error>Must be numbers only.</mat-error>
+              </mat-form-field>
+              <div class='deleteButton'>
+                <button
+                  type="button"
+                  mat-mini-fab color="warn"
+                  (click)="onDeletePhone(i)">X</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <mat-form-field hintLabel="Must be less than 100 characters">
+          <textarea
+            matInput
+            placeholder="Address"
+            formControlName="address"
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="2"
+            cdkAutosizeMaxRows="5"
+            autocomplete="false"
+            maxlength="100"
+          ></textarea>
+          <mat-error
+          >Must be less than 100 characters.
+        </mat-error>
+        </mat-form-field>
+       
+        <!-- <mat-form-field appearance="fill">
+          <mat-label>Select Sub-Type</mat-label>
+          <mat-select formControlName="subType">
+            <mat-option *ngFor="let subType of subTypes" [value]="subType.value">
+              {{subType.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field> -->
+  
+
+  
+  
+    </mat-dialog-content>
+  
+    <mat-dialog-actions>
+      <button mat-raised-button color="warn" (click)="close()">Close</button>
+  
+      <button mat-raised-button color="primary" (click)="save()"
+      [disabled]="form.invalid">Save</button>
+    </mat-dialog-actions>
+  </div>
+</ng-template>
+
+
+

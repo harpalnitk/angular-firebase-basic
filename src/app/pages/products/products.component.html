@@ -1,0 +1,26 @@
+<productlist></productlist>
+
+<div class="admin-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="admin-toolbar">
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <h1 class="example-app-name">Products Dashboard</h1>
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="example-sidenav-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0" >
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" opened>
+        <mat-nav-list>
+          <a mat-list-item routerLink="list" routerLinkActive="active">Products List</a>
+          <a mat-list-item routerLink="category" routerLinkActive="active">Products By Category</a>
+          <!-- <a mat-list-item routerLink="discount" routerLinkActive="active">Discount</a>
+          <a mat-list-item routerLink="users" routerLinkActive="active">User Management</a> -->
+        </mat-nav-list>
+      </mat-sidenav>
+  
+      <mat-sidenav-content>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+  

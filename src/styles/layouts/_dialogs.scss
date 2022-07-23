@@ -1,0 +1,50 @@
+.dialog-title{
+  margin: 1rem;
+}
+
+.dialog-container{
+   
+      font-size: 1.6rem;
+
+    
+      mat-dialog-content {
+
+        mat-form-field {
+          width: 100%;
+          margin: 0 auto;
+        }
+
+        &--group {
+          width: 100%;
+        }
+      }
+      mat-dialog-actions{
+        button:not(:last-child){
+          margin-right: 2rem;
+        }
+      }
+    }
+    .two-field-div {
+      display: flex;
+      width: 100%;
+      overflow: hidden;
+      mat-form-field {
+        width: 50% !important;
+        margin-right: .5rem !important;
+      }
+    }
+
+    .add-button {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .phone-row{
+      display: flex;
+      mat-form-field{
+        width: 80%;
+      }
+      .deleteButton {
+        width: 20%;
+      }
+    }

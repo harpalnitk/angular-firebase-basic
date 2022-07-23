@@ -1,0 +1,70 @@
+/*
+
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
+$color-secondary-light: #ffb900;
+$color-secondary-dark: #ff7730;
+
+$color-tertiary-light: #2998ff;
+$color-tertiary-dark: #5643fa;
+
+
+//$color-grey-light-1: #f0f0f0;
+//$color-grey-light-2: #b4b4b4;
+
+$color-grey-light-1: #f0f0f0;//body background
+$color-grey-light-2: #e0e0e0;// anchor links hover and active
+$color-grey-light-3: #d0d0d0;
+$color-grey-light-4: #c0c0c0;
+
+$color-grey-dark-1: #b0b0b0;
+$color-grey-dark-2: #a0a0a0;
+$color-grey-dark-3: #909090;
+$color-grey-dark-4: #808080;
+$color-grey-dark-5: #303030;
+
+
+$color-white: #fff;
+$color-black: #000;
+
+$color-table-row-hover:#BBD8DC;
+$color-table-row-selected:#CFD8DC;
+
+//FONT
+// FONT VARIABLES
+$font-primary: 'Roboto', sans-serif;
+//$font-display: 'Josefin Sans', sans-serif;
+
+/*FONT SIZES*/
+// $fs-xs: .8rem;
+// $fs-s: 1.2rem;
+// $fs-m: 1.4rem;
+// $fs-d: 1.6rem;
+// $fs-l: 2rem;
+
+//RESPONSIVE BREAKPOINTS
+$bp-4K: 426.667em; // 2560px/16 = 426.667em; 1em = 16px default for all browsers
+$bp-laptop-large: 90em; // 1440px/16 = 90em; 1em = 16px default for all browsers
+$bp-laptop: 64em; // 1024px/16 = 64em; 1em = 16px default for all browsers
+$bp-tablet: 48em; // 768px/16 = 48em; 1em = 16px default for all browsers
+$bp-mobile-large: 37.5em; // 425px/16 = 26.5625; 1em = 16px default for all browsers
+$bp-mobile-medium: 23.4375em; // 375px/16 = 23.4375em; 1em = 16px default for all browsers
+$bp-mobile-small: 20em; // 320px/16
+
+
+
+
+$light-gray: #efefef;
+$dark-gray: #333;
+$main-background: $light-gray;
+$main-text: $dark-gray;

@@ -1,0 +1,33 @@
+.row {
+    display: flex;
+    flex-direction: row;
+  
+    .col {
+      padding: 2.5em;
+    }
+  }
+  
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .mat-raised-button {
+    margin: 1em 0 0 0 !important;
+  }
+  
+  .form-group {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    &.ng-touched.ng-invalid {
+      border: solid red 1px;
+    }
+  }

@@ -1,0 +1,46 @@
+// @import "styles/abstracts/variables";
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: 6vh;
+  min-height: 4rem;
+}
+.header {
+  &__logo {
+    min-width: 8rem;
+    font-size: 1.6rem;
+    //transform: scale(1.2);
+    //transform-origin: left;
+    margin-right: 1rem;
+  }
+
+  &__user-avatar {
+    min-width: 3.2rem;
+    width: 3.2rem;
+    //height: 3.2rem;
+    margin-right: 1rem;
+    border-radius: 50%;
+  }
+  &__navigation-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.4rem;
+    small {
+      font-size: .8rem;
+    }
+    &--start {
+      margin-right: auto;
+      display: flex;
+      flex-direction: row;
+      li {
+        margin-right: 1rem;
+      }
+    }
+    &-active {
+      opacity: 0.8;
+      transform: scale(1.1);
+    }
+  }
+}
+
+

@@ -1,0 +1,50 @@
+@import 'styles/abstracts/variables';
+
+:host {
+  display: block;
+  min-height: 650px;
+  width: 100%;
+}
+.carousel-control-container {
+  justify-content: center;
+  display: flex;
+  margin: 1rem;
+}
+.carousel-control {
+  display: flex;
+  justify-content: space-between;
+  max-width: 40rem;
+  margin-bottom: 2rem;
+  width: 10rem;
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
+
+  button {
+    background-color: #ccc;
+    border: 0;
+    border-radius: 50%;
+    height: 0.75rem;
+    position: relative;
+    transition: all 0.3s;
+    width: 0.75rem;
+
+    &:hover {
+      transform: scale(2);
+    }
+
+    &:disabled {
+      background-color: $color-primary-light;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.item-container {
+  width: 100%;
+  position: relative;
+}

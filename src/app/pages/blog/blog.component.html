@@ -1,0 +1,18 @@
+<!-- <p>blog works!</p> -->
+
+
+<!-- <button routerLink="posts">Posts</button>
+<button routerLink="user">Posts For User</button>
+<button routerLink="grouped">Posts Group By Category</button> -->
+<div class="u__center mt-1">
+    <nav mat-tab-nav-bar backgroundColor="primary" color="accent">
+        <a mat-tab-link *ngFor="let link of links"
+           (click)="activeLink = link.url"
+           [active]="activeLink == link.url"
+           [routerLink]="link.url"> {{link.name}} </a>
+        <!-- <a mat-tab-link disabled>Disabled Link</a> -->
+    </nav>
+</div>
+
+
+<router-outlet></router-outlet>

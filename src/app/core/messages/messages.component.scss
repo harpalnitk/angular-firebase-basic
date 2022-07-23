@@ -1,0 +1,22 @@
+// @import "styles/abstracts/variables";
+
+.messages {
+  position: fixed;
+  z-index: 12;
+  width: 100%;
+  margin: auto;
+
+  &__container {
+    padding: 1.5rem 2.5rem;
+    z-index: 999;
+    font-size: 1.6rem;
+  }
+
+  &__close-icon {
+    float: right;
+    font-size: 2rem;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    margin-right: 1rem;
+  }
+}

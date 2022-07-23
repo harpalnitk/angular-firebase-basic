@@ -1,0 +1,18 @@
+@import 'styles/abstracts/variables';
+
+.top-row{
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem 1rem;
+  button{
+    margin: 1rem 0;
+  }
+  mat-form-field{
+    width: 50%;
+  }
+}
+
+
+
+
+ 

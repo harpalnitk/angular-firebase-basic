@@ -1,0 +1,14 @@
+<header>
+    <h1>Reactive Code + Animations</h1>
+    <nav>
+      <a
+        *ngFor="let item of menuItems"
+        [routerLink]="item.path"
+        routerLinkActive="active"
+        >{{ item.name }}</a
+      >
+    </nav>
+  </header>
+  <main>
+    <router-outlet></router-outlet>
+  </main>

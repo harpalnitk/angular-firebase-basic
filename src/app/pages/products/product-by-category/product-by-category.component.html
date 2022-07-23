@@ -1,0 +1,92 @@
+
+<main>
+  
+  <section class="left">
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Select Product Category</mat-label>
+        <mat-select>
+          <mat-option
+            *ngFor="let category of category$ | async"
+            [value]="category.id"
+            (onSelectionChange)="categorySelected($event, category)"
+          >
+            {{ category.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- <div *ngFor="let  product of products$ |async">
+            <button mat-button (click)="onProductSelect()">Title: {{product.title}} Category:{{product.categoryId}}</button>
+        </div> -->
+    <div class="product-list" *ngIf="products$ | async as products">
+      <ng-container *ngIf="products.length > 0">
+      <h2>Products</h2>
+      <mat-selection-list #selectedProduct [multiple]="false">
+        <mat-list-option
+          *ngFor="let product of products"
+          [value]="product"
+          (click)="
+            onProductSelect(selectedProduct.selectedOptions.selected[0]?.value)
+          "
+          
+        >
+          {{ product.name }}
+          <mat-divider></mat-divider>
+        </mat-list-option>
+      </mat-selection-list>
+      </ng-container>
+    </div>
+  </section>
+
+  <!-- or in above if mat selection is not used then
+  to highlight selected product we can use
+  [ngClass] = "{active: product?.id === (selectedProduct$ | async)?.id}"
+  (click) = "onProductSelect(product.id)"
+ -->
+
+
+ <!-- we can use ancilliary stream here for :- Product Detail For: {{ prod.name }}-->
+  <section class="right">
+    <div
+      *ngIf="selectedProduct$ | async as prod"
+      class="detail "
+    >
+    <ng-container *ngIf="prod.id">
+      <h2>Product Detail For: {{ prod.name }}</h2>
+      <div class="product mat-elevation-z8">
+        <div>
+          <span>Name</span><span>{{ prod.name }}</span>
+        </div>
+        <div>
+          <span>Price</span><span>{{ prod.price }}</span>
+        </div>
+        <div>
+          <span>Description</span><span>{{ prod.desc }}</span>
+        </div>
+        <div>
+          <span>Category</span><span>{{ prod.category }}</span>
+        </div>
+      </div>
+      </ng-container>
+    </div>
+    <div
+      *ngIf="suppliers$ | async as suppliers"
+      class="detail mat-elevation-z8"
+    >
+    <ng-container *ngIf="suppliers?.length > 0">
+      <h4>Product Suppliers</h4>
+
+      <mat-list>
+        <mat-list-item *ngFor="let supplier of suppliers">
+          <h3 matLine>{{ supplier.name }}</h3>
+          <p matLine>
+            <span> {{ supplier.id }} </span>
+            <span class="demo-2"> -- {{ supplier.name }} </span>
+          </p>
+        </mat-list-item>
+      </mat-list>
+      </ng-container>
+    </div>
+  </section>
+</main>

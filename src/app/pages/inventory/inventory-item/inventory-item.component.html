@@ -1,0 +1,35 @@
+<div class="main-card-container">
+<ng-container *ngIf="inventory; else elseTemplate">
+    <mat-card class="main-card">
+        <mat-card-header>
+            <mat-card-title>Name: {{inventory.name}}</mat-card-title>
+            <mat-card-subtitle>Created On: {{inventory.createdOn.toDate() | date: 'mediumDate'}}</mat-card-subtitle>
+        </mat-card-header>
+       
+        <mat-card-content>
+            <h3>Company: {{inventory.makeView}}</h3>
+            <h3>Quantity: {{inventory.count}}</h3>
+            <h4>Type: {{inventory.typeView}}</h4>
+            <h5>Sub-Type: {{inventory.subTypeView}}</h5>
+        </mat-card-content>
+        <mat-card-actions class="action-buttons" align="center">
+            <button mat-mini-fab color="primary" aria-label="Edit Inventory" (click)="editInventory()">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-mini-fab color="accent" aria-label="Increase Quantity" (click)="changeInventoryQuantity(1)">
+                <mat-icon>add</mat-icon>
+            </button>
+            <button mat-mini-fab color="warn" aria-label="Decrease Quantity" (click)="changeInventoryQuantity(0)">
+                <mat-icon>remove</mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</ng-container>
+<ng-template #elseTemplate>
+    <div class="u__center" *ngIf="!!!inventory" #showSpinner>
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>
+<button class="history-button" *ngIf="showHistoryButton" mat-raised-button color= "primary" (click)="showHistory()">Show Item History</button>
+</div>
+<router-outlet></router-outlet>

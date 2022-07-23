@@ -1,0 +1,49 @@
+@import 'styles/abstracts/variables';
+
+:host {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.carousel-item-images {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  border-radius: 50%;
+}
+
+.size-sm {
+  height: 10rem;
+  width: 10rem;
+}
+
+.size-md {
+  height: 15rem;
+  width: 15rem;
+}
+
+.size-lg {
+  height: 20rem;
+  width: 20rem;
+}
+
+.size-xl {
+  height: 25rem;
+  width: 25rem;
+}
+
+.m-sm {
+  margin-top: 4rem;
+}
+
+.m-md {
+  margin-top: 8rem;
+}
+
+.m-lg {
+  margin-top: 12rem;
+}

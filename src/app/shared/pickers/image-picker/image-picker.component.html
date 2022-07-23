@@ -1,0 +1,23 @@
+<div class="container">
+  <img
+  class="image" 
+  [src]='image' 
+  *ngIf="showPreview && !(uploadPercent$ | async)">
+<div class="middle">
+  <button mat-raised-button class="file-picker-button"
+  color="primary" 
+  (click)="filePicker.click()" 
+  *ngIf="!(uploadPercent$ | async)"
+  >
+    <mat-icon>photo_camera</mat-icon>
+    <span>Change Picture</span>
+  </button>
+
+</div>
+<mat-progress-bar *ngIf="(uploadPercent$ | async)"  mode="indeterminate"></mat-progress-bar>
+</div>
+<input 
+type="file" 
+accept="image/jpeg, image/jpg, image/png"
+#filePicker 
+(change)="onFileChosen($event)">

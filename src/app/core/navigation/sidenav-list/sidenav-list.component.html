@@ -1,0 +1,55 @@
+<mat-nav-list>
+  <ng-container>
+    <a
+      mat-list-item
+      routerLink="/auth"
+      (click)="onClose()"
+      *ngIf="!(isAuth$ | async)"
+    >
+      <mat-icon>add_circle</mat-icon>
+      <span class="sidebar__nav-caption">SignUp</span>
+    </a>
+    <a
+      mat-list-item
+      routerLink="/auth"
+      (click)="onClose()"
+      *ngIf="!(isAuth$ | async)"
+    >
+      <mat-icon>login</mat-icon>
+      <span class="sidebar__nav-caption">SignIn</span>
+    </a>
+    <a
+    mat-list-item
+    routerLink="/inventory"
+    (click)="onClose()"
+    *ngIf="isAuth$ | async"
+  >
+    <mat-icon>inventory</mat-icon>
+    <span class="sidebar__nav-caption">Inventory</span>
+  </a>
+    <a
+      mat-list-item
+      [routerLink]="['/profile']"
+      (click)="onClose()"
+      *ngIf="isAuth$ | async"
+    >
+      <mat-icon>face</mat-icon>
+      <span class="sidebar__nav-caption">Profile</span>
+    </a>
+    <a
+    mat-list-item
+    [routerLink]="['/rxjs-course']"
+    (click)="onClose()"
+  >
+    <mat-icon>face</mat-icon>
+    <span class="sidebar__nav-caption">RXJS Course</span>
+  </a>
+    <mat-list-item *ngIf="isAuth$ | async">
+      <button mat-icon-button (click)="onSignOut()">
+        <mat-icon>logout</mat-icon>
+        <span class="sidebar__nav-caption">SignOut</span>
+      </button>
+    </mat-list-item>
+    
+  </ng-container>
+</mat-nav-list>

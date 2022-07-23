@@ -1,0 +1,43 @@
+<div class="main-card-container">
+    <div class="u__center">
+    <mat-spinner color="primary" *ngIf="isLoading$ | async"></mat-spinner>
+    </div>
+    <mat-card *ngIf="profile" class="main-card">
+        <mat-card-header>
+            <mat-card-title>{{profile.displayName}}</mat-card-title>
+            <mat-card-subtitle>{{profile.firstName}} {{profile.lastName}}</mat-card-subtitle>
+        </mat-card-header>
+        <img class="profile-image" matCardImage [src]="profile.photoURL">
+        <mat-card-content>
+            <mat-list>
+                <h2 matSubheader>ABOUT</h2>
+                <mat-list-item>
+                   
+                    <p matLine>
+                      <span> {{profile.about}} </span>
+                    </p>
+                  </mat-list-item>
+                  <mat-divider></mat-divider>
+                  <h2 matSubheader>CONTACT</h2>
+                <mat-list-item>
+                  <mat-icon matListIcon color="warn">location_on</mat-icon>
+                  <p matLine class="multi-line">
+                    <span> Address: </span>
+                    <span> {{profile.address}} </span>
+                  </p>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListIcon color="warn">phone</mat-icon>
+                    <p matLine class="multi-line">
+                      <span> Phone: </span>
+                      <span> {{profile?.contact?.phones | arrayToStringWithDelimiter: ', '}} </span>
+                    </p>
+                  </mat-list-item>
+              </mat-list>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="onEdit()">EDIT</button>
+        </mat-card-actions>
+
+    </mat-card>
+</div>

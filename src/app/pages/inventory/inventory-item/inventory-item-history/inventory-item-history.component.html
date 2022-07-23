@@ -1,0 +1,75 @@
+<div class="main-table-container">
+  <h1>INVENTORY HISTORY</h1>
+
+  <div class="main-table">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+      <!-- Index Column -->
+      <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef>S.No.</th>
+        <td
+          mat-cell
+          *matCellDef="let element; let i = index"
+          class="table-column table-column--xs"
+        >
+          {{ i + 1 }}
+        </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="table-column table-column--s"
+        >
+          {{ element.action }}
+        </td>
+      </ng-container>
+
+      <!-- Qty Column -->
+      <ng-container matColumnDef="qty">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>New Qty</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="table-column table-column--fixed"
+        >
+          {{ element.qty }}
+        </td>
+      </ng-container>
+
+      <!-- Date Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="table-column table-column--fixed"
+        >
+          {{ element.date.toDate() | date: "mediumDate" }}
+        </td>
+      </ng-container>
+      <!-- Count Column -->
+      <ng-container matColumnDef="userName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Action By</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="table-column table-column--fixed"
+        >
+          {{ element.userName }}
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <div class="empty-div" *ngIf="dataSource?.data?.length === 0">
+      <h1>No History Available</h1>
+    </div>
+  </div>
+  <div class="u__center" *ngIf="isLoading$ | async">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>

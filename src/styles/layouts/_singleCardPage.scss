@@ -1,0 +1,24 @@
+.main-card-container{
+    margin: 0 auto;
+    @media only screen and (max-width: $bp-4K) {
+      width: 40vw;
+    }
+    @media only screen and (max-width: $bp-laptop) {
+      width: 50vw;
+    }
+    @media only screen and (max-width: $bp-tablet) {
+      width: 70vw;
+    }
+    @media only screen and (max-width: $bp-mobile-large) {
+      width: 90vw;
+    }
+    @media only screen and (max-width: $bp-mobile-small) {
+      width: 100vw;
+    }
+  }
+  .main-card {
+    padding: 0 2vw;
+    margin-top: 3vh;
+    h1, h2, h3, h4, h5, h6 { text-align: center}
+  }
+

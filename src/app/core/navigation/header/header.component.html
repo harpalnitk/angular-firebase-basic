@@ -1,0 +1,134 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="onToggleSidenav()">
+    <mat-icon aria-hidden="false" aria-label="Side Menu">menu</mat-icon>
+  </button>
+
+  <div class="header__logo"><a routerLink="/">MEGA POWER</a></div>
+  <ng-container>
+    <!--     IF DATA IS NOT USED AND IF asAuth IS FALSE THEN THE WHOLE CONTENT IS NOT DISPLAYED-->
+    <ul class="header__navigation-items header__navigation-items--start">
+      <li>
+        <span
+          ><a
+            routerLink="/rxjs-course"
+            routerLinkActive="header__navigation-items-active"
+            >RXJS Course</a
+          ></span
+        >
+      </li>
+      <li>
+        <span
+          ><a
+            routerLink="/blog"
+            routerLinkActive="header__navigation-items-active"
+            >Blog</a
+          ></span
+        >
+      </li>
+      
+      <li *ngIf="isAuth$ | async">
+        <span
+          ><a
+            routerLink
+            routerLink="/inventory"
+            routerLinkActive="header__navigation-items-active"
+            >Inventory</a
+          ></span
+        >
+      </li>
+      <li>
+        <span
+          ><a
+            routerLink
+            routerLink="/products"
+            routerLinkActive="header__navigation-items-active"
+            >Products</a
+          ></span
+        >
+      </li>
+      <li>
+        <span
+          ><a
+            routerLink
+            routerLink="/lazy-loading"
+            routerLinkActive="header__navigation-items-active"
+            >Lazy Loading Recipes</a
+          ></span
+        >
+      </li>
+      <li>
+        <span
+          ><a
+            routerLink
+            routerLink="/forms"
+            routerLinkActive="header__navigation-items-active"
+            >Forms</a
+          ></span
+        >
+      </li>
+      <li>
+        <span
+          ><a
+            routerLink
+            routerLink="/reactive-code-animations"
+            routerLinkActive="header__navigation-items-active"
+            >Reactive Animations</a
+          ></span
+        >
+      </li>
+      <!-- <li *ngIf="isAuth$ | async">
+        <span
+          ><a
+            routerLink="/courses"
+            routerLinkActive="header__navigation-items-active"
+            >Courses</a
+          ></span
+        >
+      </li> -->
+    </ul>
+
+    <ul class="header__navigation-items">
+      <li>
+        <a [matMenuTriggerFor]="rootMenu">
+          <span class="u__center" *ngIf="!(user$ | async)">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Guest menu"
+              class="mr-half"
+              >account_circle</mat-icon
+            >
+            Guest
+          </span>
+          <span class="u__center" *ngIf="(user$ | async) as user">
+            <img class="header__user-avatar" [src]="user.photoURL">
+          </span>
+        </a>
+      </li>
+    </ul>
+  </ng-container>
+</mat-toolbar>
+
+<mat-menu #rootMenu="matMenu">
+  <ng-container>
+    <button mat-menu-item routerLink="/auth" *ngIf="!(isAuth$ | async)">
+      <mat-icon>add_circle</mat-icon>
+      <span>SignUp</span>
+    </button>
+    <button mat-menu-item routerLink="/auth" *ngIf="!(isAuth$ | async)">
+      <mat-icon>login</mat-icon>
+      <span>SignIn</span>
+    </button>
+    <button
+      mat-menu-item
+      [routerLink]="['/profile']"
+      *ngIf="isAuth$ | async"
+    >
+      <mat-icon>face</mat-icon>
+      <span>Profile</span>
+    </button>
+    <button mat-menu-item (click)="onSignOut()" *ngIf="isAuth$ | async">
+      <mat-icon>logout</mat-icon>
+      <span>SignOut</span>
+    </button>
+  </ng-container>
+</mat-menu>
